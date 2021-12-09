@@ -1,0 +1,12 @@
+
+//pomak za jedan u lijevo
+//nulti false - 0
+//operacija or
+
+CHIP BitShiftL{
+	IN in[16];
+	OUT out[16];
+	
+	PARTS:
+	Or16(a[1..15]=in[0..14], b[1..15]=in[0..14], a[0]=false, b[0]=false, out=out);
+}

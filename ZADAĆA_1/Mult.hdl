@@ -1,0 +1,61 @@
+CHIP Mult
+{
+	IN a[16], b[16]; 
+	OUT out[16];
+	
+	PARTS: 
+	BitShiftL(in=a, out = pom1);
+	BitShiftL(in=pom1, out=pom2);
+	BitShiftL(in=pom2, out=pom3);
+	BitShiftL(in=pom3, out=pom4);
+	BitShiftL(in=pom4, out=pom5);
+	BitShiftL(in=pom5, out=pom6);
+	BitShiftL(in=pom6, out=pom7);
+	BitShiftL(in=pom7, out=pom8);
+	BitShiftL(in=pom8, out=pom9);
+	BitShiftL(in=pom9, out=pom10);
+	BitShiftL(in=pom10, out=pom11);
+	BitShiftL(in=pom11, out=pom12);
+	BitShiftL(in=pom12, out=pom13);
+	BitShiftL(in=pom13, out=pom14);
+	BitShiftL(in=pom14, out=pom15);
+	BitShiftL(in=pom15, out=pom16);
+	
+	//b po znamenkama 
+	Mux16(a=false, b=a, sel=b[0], out=c1);
+	Mux16(a=false, b=pom1, sel=b[1], out=c2);
+	Mux16(a=false, b=pom2, sel=b[2], out=c3);
+	Mux16(a=false, b=pom3, sel=b[3], out=c4);
+	Mux16(a=false, b=pom4, sel=b[4], out=c5);
+	Mux16(a=false, b=pom5, sel=b[5], out=c6);
+	Mux16(a=false, b=pom6, sel=b[6], out=c7);
+	Mux16(a=false, b=pom7, sel=b[7], out=c8);
+	Mux16(a=false, b=pom8, sel=b[8], out=c9);
+	Mux16(a=false, b=pom9, sel=b[9], out=c10);
+	Mux16(a=false, b=pom10, sel=b[10], out=c11);
+	Mux16(a=false, b=pom11, sel=b[11], out=c12);
+	Mux16(a=false, b=pom12, sel=b[12], out=c13);
+	Mux16(a=false, b=pom13, sel=b[13], out=c14);
+	Mux16(a=false, b=pom14, sel=b[14], out=c15);
+	Mux16(a=false, b=pom15, sel=b[15], out=c16);
+	
+	//zbrajanje 
+	Add16(a=c1, b=c2, out=d1);
+	Add16(a=c3, b=c4, out=d2);
+	Add16(a=c5, b=c6, out=d3);
+	Add16(a=c7, b=c8, out=d4);
+	Add16(a=c9, b=c10, out=d5);
+	Add16(a=c11, b=c12, out=d6);
+	Add16(a=c13, b=c14, out=d7);
+	Add16(a=c15, b=c16, out=d8);
+	
+	Add16(a=d1, b=d2, out=e1);
+	Add16(a=d3, b=d4, out=e2);
+	Add16(a=d5, b=d6, out=e3);
+	Add16(a=d7, b=d8, out=e4);
+	
+	Add16(a=e1, b=e2, out=r1);
+	Add16(a=e3, b=e4, out=r2);
+	
+	Add16(a=r1, b=r2, out=out);
+}
