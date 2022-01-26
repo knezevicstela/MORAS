@@ -1,0 +1,141 @@
+class Vint
+{
+    field int size;
+    field Array V;
+
+    constructor Vint new(int n)
+    {
+        if(n < 0)
+        {
+            let size = 1;
+            let V = Array.new(size);
+        }
+        else
+        {
+            let size = Main.pot(2,n);
+            let V = Array.new(size);
+        }
+        return this;
+    }
+
+    method void set(int k, int v)
+    {
+        let V[k] = v;
+        return;
+    }
+
+    method int get(int k){return V[k];}
+
+    method int len(){return size;}
+    
+    method void resize(int m)
+    { 
+        var int i, newSize, x;
+        var Array arr;
+        let x = Main.pot(2, m);
+
+        let newSize = Main.min(size, x);
+
+        let arr = Array.new(x);
+        let i = 0;
+        while(i < newSize)
+        {
+            let arr[i] = V[i];
+            let i = i + 1;
+        }
+    
+        let V = arr;
+        let size = x;
+        return;
+    }
+
+    function boolean is_eq(Vint A, Vint B)
+    { 
+        var int j, d;
+        
+        if((A.len()) = (B.len()))
+        {
+            
+            let d = A.len();
+            let j = 0;
+            while(j < d){
+                if(~(A.get(j) = B.get(j)))
+                {
+                    
+                    return false;
+                } 
+                else {}
+                let j = j + 1;
+            }
+            return true;
+        }
+        else
+        {
+            do Output.printInt(j);
+            return false;
+        }
+    }
+    
+    function boolean elems(Vint A, Vint B)
+    { 
+        var Vint C, D;
+        var int i, j, d, b;
+        do Output.println();
+        do Output.printString("IN ELEMS");
+        do Output.println();
+
+        let i = 0;
+        let j = 0;
+        let C = Vint.new(A.len());
+        let D = Vint.new(B.len());
+        do Output.printString("prvi");
+        do Output.println();
+        let d = A.len();
+        while(i < d)
+        {
+            do C.set(i, A.get(i));
+            let i = i + 1; 
+        }
+        let b = B.len();
+        do Output.printString("drugi");
+        do Output.println();
+        while(j < b){
+            do D.set(i, B.get(i));
+            let i = i + 1; 
+        }
+        do Output.printString("prije QS");
+        do Output.println();
+
+        do QS.sort(C, 0, (C.len()));
+        do QS.sort(D, 0, (D.len()));
+        do Output.printString("poslije QS");
+        
+        do Output.println();
+        if(C.len() = D.len()){
+            let j = 0;
+            while(j < C.len()){
+                if(~(C.get(j) = D.get(j)))
+                {
+                    return false;
+                }
+                else{}
+                let j = j + 1;
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    method void print()
+    {
+        var int i;
+        while(i < size)
+        {
+            do Output.printInt(V[i]);
+            let i = i + 1;
+        }
+        return;
+    }
+}

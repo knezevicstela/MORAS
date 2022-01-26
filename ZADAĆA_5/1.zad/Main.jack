@@ -1,0 +1,35 @@
+class Main {
+	
+   	function void main() {
+
+     var Array A; 
+     var int len;
+     var int i, sum;
+
+     let len = Keyboard.readInt("Unesite duljinu polja: ");
+     let A = Array.new(len);
+     let i = 0;
+
+     while (i < len) {
+
+        let A[i] = Keyboard.readInt("Unesite broj:");
+       	let i = i + 1;
+
+     }
+
+     do Quicksort.quicksort(A, 0, len-1);
+     let i = 0;
+
+     while (i < len) {
+
+       	do Output.printInt(A[i]);
+       	do Output.printString(" ");
+       	let i = i+1;
+
+     }
+     
+     return;
+     
+   }
+
+}
